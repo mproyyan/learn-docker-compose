@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  golangapp: 
+    container_name: golang-build
+    # jika nama file adalah Dockerfile gunakan yang dibawah ini
+    # build: ./
+    # jika nama file bukan Dockerfile
+    build: 
+      context: ./ # folder dimana dockerfile berada
+      dockerfile: Dockerfile.development # nama file
+      args:
+        - WD=builder
