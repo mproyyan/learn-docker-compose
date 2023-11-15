@@ -1,0 +1,10 @@
+FROM golang:1.21-alpine3.17 AS builder
+WORKDIR /${WD}
+COPY main.go .
+RUN go build -o /${WD}/main /${WD}/main.go
+
+FROM scratch
+WORKDIR /app
+COPY --from=builder /${WD}/main ./myprogram
+EXPOSE 8080
+CMD [ "/app/main" ]

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  golangapp: 
+    container_name: golang-command
+    # jika nama file adalah Dockerfile gunakan yang dibawah ini
+    # build: ./
+    # jika nama file bukan Dockerfile
+    build: 
+      context: ./ # folder dimana dockerfile berada
+      dockerfile: Dockerfile.development # nama file
+      args:
+        - WD=builder
+    # versi short syntax
+    # ports:
+    #   - 8080:8080
+    # versi long syntax
+    ports:
+      - protocol: tcp
+        published: 8080
+        target: 8080
+    command: /app/myprogram
