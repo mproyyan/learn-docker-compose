@@ -1,0 +1,2 @@
+FROM postgres:11.22-alpine3.18
+EXPOSE 5432
