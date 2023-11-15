@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+
+  nginx-server:
+    container_name: nginx-server
+    image: nginx:alpine
+    depends_on:
+      - pqdb
+
+  pqdb:
+    container_name: postgres-db
+    image: postgres:11.22-alpine3.18
+    environment:
+      - POSTGRES_PASSWORD=mimin
