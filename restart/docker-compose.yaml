@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+
+  server:
+    container_name: alpine-restart
+    image: alpine:3.18
+    # restart: always
+    # restart: unless-stopped
+    restart: on-failure
+    command: 
+      - /bin/sh
+      - -c
+      - |
+        sleep 5
+        exit 1
