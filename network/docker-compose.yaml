@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    container_name: nginx-ku
+    image: nginx:alpine
+    ports:
+      - 8801:80
+    networks:
+      - core
+
+  alpine:
+    container_name: alpine-ku
+    image: alpine
+    command:
+      - /bin/sh
+      - -c
+      - |
+        apk add curl
+        tail -f /dev/null
+    networks:
+      - core
+
+networks:
+  core:
+    driver: bridge
+  # network-exists:
+  #   external: true # use this if network already exists
