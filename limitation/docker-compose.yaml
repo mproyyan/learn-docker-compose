@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  nginx-server:
+    image: nginx:latest
+    container_name: nginx-limit
+    ports:
+      - 9090:80
+    deploy:
+      resources:
+        reservations: # minimum given
+          cpus: "0.25"
+          memory: 50m
+        limits: # maximum given
+          cpus: "0.50"
+          memory: 100m
