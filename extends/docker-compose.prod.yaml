@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  prodapp:
+    container_name: production-app
+    extends:
+      file: docker-compose.yaml
+      service: app
+    environment: 
+      - MODE=production
+      - APP_PORT=9090
+    ports:
+      - 9090:9090
+    networks:
+      - extends_core-network
+
+networks:
+  extends_core-network:
+    driver: bridge
+    external: true
